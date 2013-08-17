@@ -5,9 +5,8 @@ for single sign on between multiple applications.
 
 == Usage
 
-    git clone git://github.com/joshsoftware/sso-devise-omniauth-client.git
+    git clone git://github.com/pofmagicfingers/sso-devise-omniauth-client.git
     bundle install
-    rake db:create
     rake db:migrate
 
 == Configure the Client
@@ -39,8 +38,8 @@ and / or modify as required.
 
 == To test single sign-on
 
-    git clone git://github.com/joshsoftware/sso-devise-omniauth-client.git client1
-    git clone git://github.com/joshsoftware/sso-devise-omniauth-client.git client2
+    git clone git://github.com/pofmagicfingers/sso-devise-omniauth-client.git client1
+    git clone git://github.com/pofmagicfingers/sso-devise-omniauth-client.git client2
 
 
     # configure the client1 key and secret in the provider as mentioned above

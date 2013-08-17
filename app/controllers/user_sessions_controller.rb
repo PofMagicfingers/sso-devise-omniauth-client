@@ -1,6 +1,4 @@
 class UserSessionsController < ApplicationController
-  before_filter :login_required, :only => [ :destroy ]
-
   respond_to :html
 
   # omniauth callback method
@@ -13,8 +11,7 @@ class UserSessionsController < ApplicationController
       # New user registration
       user = User.new(:uid => omniauth['uid'])
     end    
-    user.first_name = omniauth['extra']['first_name']
-    user.last_name  = omniauth['extra']['last_name']
+    user.login = omniauth['info']['login']
     user.save
 
     #p omniauth
@@ -35,7 +32,7 @@ class UserSessionsController < ApplicationController
   # logout - Clear our rack session BUT essentially redirect to the provider
   # to clean up the Devise session from there too !
   def destroy
-    session[:user_id] = nil
+    reset_session
 
     flash[:notice] = 'You have successfully signed out!'
     redirect_to "#{CUSTOM_PROVIDER_URL}/users/sign_out"
